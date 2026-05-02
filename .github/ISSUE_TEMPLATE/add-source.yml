@@ -1,0 +1,58 @@
+name: ➕ Add a source
+description: Suggest a new AI news source to add to the list
+title: "[Add] <source name>"
+labels: ["add-source"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Source name
+      placeholder: e.g., AI Snake Oil
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which section?
+      options:
+        - X (Twitter)
+        - Reddit
+        - Newsletter
+        - Outlet / blog
+        - Paper / research
+        - YouTube
+        - Aggregator / trending
+        - Discord
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Proposed tier
+      options:
+        - "S — breaks news within minutes"
+        - "A — strong curation, sub-day latency"
+        - "B — daily/weekly, near-zero noise"
+        - "C — weekly+ deep analysis"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it worth following?
+      placeholder: One-line description of why this is high-signal
+    validations:
+      required: true
+  - type: input
+    id: active-since
+    attributes:
+      label: Active since (approx)
+      placeholder: e.g., 2024

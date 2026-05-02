@@ -1,229 +1,254 @@
 # 📡 AI News Radar
 
-> **AI 소식, 어디서 가장 먼저 터지는가?**
-> 속도 순으로 정렬한 AI 뉴스 소스 큐레이션. 오픈소스 모델 드랍부터 OpenAI 키노트, 논문 프리프린트까지 — *가장 빠른 채널부터 가장 깊은 분석까지* 한 페이지에.
+> **Where does AI news break first?**
+> A curated, speed-ranked list of AI news sources — from instant model drops to deep weekly analysis. One page, ranked by latency.
 
-![Last Updated](https://img.shields.io/badge/updated-2026--05--01-brightgreen)
+![Last Updated](https://img.shields.io/github/last-commit/xodn348/ai-news-radar?label=updated&color=brightgreen)
 ![Sources](https://img.shields.io/badge/sources-80+-blue)
-![Lang](https://img.shields.io/badge/lang-한국어-red)
+![Auto Updated](https://img.shields.io/badge/auto--updated-weekly-orange)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
+> 🔄 **Living document** — updated continuously. Star the repo to track changes. Open a PR or issue to add/remove a source. See [CONTRIBUTING](#-contributing).
+
 ---
 
-## ⚡ 속도 티어 (TL;DR)
+## ⚡ Speed Tiers (TL;DR)
 
-| Tier | 채널 | 평균 지연 | 시그널-노이즈 비 | 추천 대상 |
+| Tier | Channel | Latency | Signal/Noise | Best For |
 |:---:|---|:---:|:---:|---|
-| **S** | X (Twitter) — 핵심 인물 리스트 | **0–10분** | 중 | 모델 드랍·키노트·해킹뉴스를 *제일 먼저* 알고 싶은 사람 |
-| **S** | r/LocalLLaMA | **5–30분** | 상 | 오픈소스 LLM·로컬 추론·벤치마크 즉시 반응 |
-| **A** | Discord (Latent Space, LAION, HF) | **수십 분** | 중상 | 빌더 커뮤니티 인사이트 |
-| **A** | Hacker News (`news.ycombinator.com/?q=AI`) | **1–6시간** | 매우 상 | 큐레이션된 상위 토론 |
-| **B** | 뉴스레터 (TLDR AI, Rundown, Ben's Bites) | **다음날 아침** | 매우 상 | 하루 한 번 정리, 놓친 거 없는지 체크 |
-| **B** | YouTube (AI Explained, Matthew Berman) | **1–3일** | 상 | 심층 해설·실험 리뷰 |
-| **C** | The Batch / Import AI / Interconnects | **주 1회** | 최상 | 잡음 없이 의미만 — 연구·정책 흐름 |
+| **S** | X (Twitter) — curated lists | **0–10 min** | Medium | Catching model drops, keynotes, breaking news *first* |
+| **S** | r/LocalLLaMA | **5–30 min** | High | Open-source LLMs, local inference, instant benchmark reactions |
+| **A** | Discord (Latent Space, LAION, HF) | **Tens of minutes** | Med-High | Builder community insights |
+| **A** | Hacker News (`news.ycombinator.com/?q=AI`) | **1–6 hours** | Very High | Curated top discussion |
+| **B** | Newsletters (TLDR AI, Rundown, Ben's Bites) | **Next morning** | Very High | Daily catch-up — "did I miss anything?" |
+| **B** | YouTube (AI Explained, Matthew Berman) | **1–3 days** | High | In-depth explainers, hands-on reviews |
+| **C** | The Batch / Import AI / Interconnects | **Weekly** | Highest | Pure signal — research, policy, post-training |
 
-> 💡 **추천 조합**: S 티어 1–2개 라이브 모니터링 + B 티어 뉴스레터 1개 구독 + C 티어 주간 1개. 더 넣으면 노이즈만 늘어남.
+> 💡 **Recommended combo**: 1–2 S-tier live monitors + 1 B-tier daily newsletter + 1 C-tier weekly. Adding more just adds noise.
 
 ---
 
-## 🐦 X (Twitter) — 실시간 (S Tier)
+## 🐦 X (Twitter) — Real-time (S Tier)
 
-> 모델 출시·기업 발표·연구자 핫테이크는 거의 100% 여기서 먼저 터집니다. **리스트로 묶어서 보세요** — 타임라인 알고리즘은 AI 속보에 너무 느립니다.
+> Model launches, company announcements, and researcher hot takes break here ~100% of the time. **Use a List** — the algorithmic timeline is too slow for AI news.
 
-### 🏢 기업/연구소 공식 계정
+### 🏢 Official company / lab accounts
 - [@OpenAI](https://x.com/OpenAI) · [@AnthropicAI](https://x.com/AnthropicAI) · [@GoogleDeepMind](https://x.com/GoogleDeepMind)
 - [@xai](https://x.com/xai) · [@MistralAI](https://x.com/MistralAI) · [@AIatMeta](https://x.com/AIatMeta) · [@Alibaba_Qwen](https://x.com/Alibaba_Qwen)
 - [@HuggingFace](https://x.com/huggingface) · [@perplexity_ai](https://x.com/perplexity_ai) · [@cursor_ai](https://x.com/cursor_ai)
 
-### 👤 개인 (CEO/리더)
+### 👤 Founders / executives
 - [@sama](https://x.com/sama) — Sam Altman (OpenAI)
-- [@DarioAmodei](https://x.com/DarioAmodei), [@AnthropicAI](https://x.com/AnthropicAI) 임원진
+- [@DarioAmodei](https://x.com/DarioAmodei) — Anthropic
 - [@elonmusk](https://x.com/elonmusk) — xAI / Grok
 - [@demishassabis](https://x.com/demishassabis) — Google DeepMind
 - [@miramurati](https://x.com/miramurati) — Thinking Machines
 
-### 🧠 연구자/엔지니어 (가장 빠른 해석)
+### 🧠 Researchers / engineers (fastest takes)
 - [@karpathy](https://x.com/karpathy) — Andrej Karpathy
 - [@ylecun](https://x.com/ylecun) — Yann LeCun
 - [@drjimfan](https://x.com/drjimfan) — Jim Fan (NVIDIA)
 - [@AndrewYNg](https://x.com/AndrewYNg) — Andrew Ng
-- [@goodside](https://x.com/goodside) — Riley Goodside (프롬프트 엔지니어링)
-- [@swyx](https://x.com/swyx) — shawn @ Latent Space
-- [@_philschmid](https://x.com/_philschmid) — Philipp Schmid (HF→Google)
-- [@simonw](https://x.com/simonw) — Simon Willison (LLM CLI)
+- [@goodside](https://x.com/goodside) — Riley Goodside (prompt engineering)
+- [@swyx](https://x.com/swyx) — Latent Space
+- [@_philschmid](https://x.com/_philschmid) — Philipp Schmid (HF → Google)
+- [@simonw](https://x.com/simonw) — Simon Willison (LLM CLI, blog)
 
-> 📌 **즉시 적용**: 위 계정만 묶어서 [X List](https://help.x.com/en/using-x/x-lists) 만들면 네이티브 클라이언트가 알고리즘 없는 시간순 피드가 됩니다.
+> 📌 **Action**: Bundle these into an [X List](https://help.x.com/en/using-x/x-lists) — your native client becomes a chronological, algorithm-free feed.
 
 ---
 
-## 🟧 Reddit — 커뮤니티 반응 (S/A Tier)
+## 🟧 Reddit — Community reactions (S/A Tier)
 
-| 서브레딧 | 무엇을 보나 |
+| Subreddit | What you get |
 |---|---|
-| [r/LocalLLaMA](https://reddit.com/r/LocalLLaMA) | **오픈소스 LLM 1순위.** 새 모델 양자화·벤치 리뷰가 출시 30분 안에 올라옴 |
-| [r/singularity](https://reddit.com/r/singularity) | 일반인 친화 속보 + 밈. 시그널 약하지만 빠름 |
-| [r/MachineLearning](https://reddit.com/r/MachineLearning) | 논문 토론 정통 채널 ([D]/[R] 플레어) |
-| [r/OpenAI](https://reddit.com/r/OpenAI) · [r/ClaudeAI](https://reddit.com/r/ClaudeAI) | 모델별 사용자 경험 |
-| [r/StableDiffusion](https://reddit.com/r/StableDiffusion) | 이미지/비디오 생성 — 새 체크포인트 가장 빠름 |
+| [r/LocalLLaMA](https://reddit.com/r/LocalLLaMA) | **#1 for open-source LLMs.** Quantizations and benchmark reactions within 30 min of release |
+| [r/singularity](https://reddit.com/r/singularity) | Layperson-friendly news + memes. Lower signal, very fast |
+| [r/MachineLearning](https://reddit.com/r/MachineLearning) | Canonical paper discussion ([D]/[R] flairs) |
+| [r/OpenAI](https://reddit.com/r/OpenAI) · [r/ClaudeAI](https://reddit.com/r/ClaudeAI) | Model-specific user experience |
+| [r/StableDiffusion](https://reddit.com/r/StableDiffusion) | Image/video generation — fastest source for new checkpoints |
 
 ---
 
-## 📨 뉴스레터 — 정리된 하루 (B Tier)
+## 📨 Newsletters — Daily digest (B Tier)
 
-| 이름 | 빈도 | 톤 | 링크 |
+| Name | Cadence | Tone | Link |
 |---|:---:|---|---|
-| **TLDR AI** | 매일 | 5분 컷, 무료 | [tldr.tech/ai](https://tldr.tech/ai) |
-| **The Rundown AI** | 매일 | 산업/제품 중심 | [therundown.ai](https://www.therundown.ai/) |
-| **Ben's Bites** | 매일 | 캐주얼·요약 강함 | [bensbites.com](https://bensbites.com/) |
-| **AI Breakfast** | 주 1회 | 풍부한 큐레이션 | [aibreakfast.beehiiv.com](https://aibreakfast.beehiiv.com/) |
-| **Last Week in AI** | 주 1회 | 학계+산업 골고루 | [lastweekin.ai](https://lastweekin.ai/) |
-| **The Batch** (Andrew Ng) | 주 1회 | 점잖고 깊음 | [deeplearning.ai/the-batch](https://www.deeplearning.ai/the-batch/) |
-| **Import AI** (Jack Clark) | 주 1회 | 정책·안전·딥다이브 | [jack-clark.net](https://jack-clark.net/) |
-| **Interconnects** (Nathan Lambert) | 주 2–3회 | 포스트트레이닝·RLHF 1티어 | [interconnects.ai](https://www.interconnects.ai/) |
-| **Latent Space** (swyx) | 주 1–2회 | 빌더/엔지니어 관점 | [latent.space](https://www.latent.space/) |
-| **Stratechery** (Ben Thompson) | 주 4회 (유료) | 비즈니스·전략 분석 최강 | [stratechery.com](https://stratechery.com/) |
-| **Platformer** (Casey Newton) | 주 3회 | 빅테크·정책 | [platformer.news](https://www.platformer.news/) |
-| **Semafor Technology** | 주 2회 | 무료 양질 | [semafor.com/technology](https://www.semafor.com/technology) |
+| **TLDR AI** | Daily | 5-min read, free | [tldr.tech/ai](https://tldr.tech/ai) |
+| **The Rundown AI** | Daily | Industry / product focus | [therundown.ai](https://www.therundown.ai/) |
+| **Ben's Bites** | Daily | Casual, strong summaries | [bensbites.com](https://bensbites.com/) |
+| **AI Breakfast** | Weekly | Rich curation | [aibreakfast.beehiiv.com](https://aibreakfast.beehiiv.com/) |
+| **Last Week in AI** | Weekly | Balanced academic + industry | [lastweekin.ai](https://lastweekin.ai/) |
+| **The Batch** (Andrew Ng) | Weekly | Measured, deep | [deeplearning.ai/the-batch](https://www.deeplearning.ai/the-batch/) |
+| **Import AI** (Jack Clark) | Weekly | Policy, safety, deep dives | [jack-clark.net](https://jack-clark.net/) |
+| **Interconnects** (Nathan Lambert) | 2–3x/week | Top tier on post-training / RLHF | [interconnects.ai](https://www.interconnects.ai/) |
+| **Latent Space** (swyx) | 1–2x/week | Builder / engineer angle | [latent.space](https://www.latent.space/) |
+| **Stratechery** (Ben Thompson) | 4x/week (paid) | Best-in-class business strategy | [stratechery.com](https://stratechery.com/) |
+| **Platformer** (Casey Newton) | 3x/week | Big tech + policy | [platformer.news](https://www.platformer.news/) |
+| **Semafor Technology** | 2x/week | Free, high quality | [semafor.com/technology](https://www.semafor.com/technology) |
 
 ---
 
-## 📰 매체·블로그 (분석 깊이 우선)
+## 📰 Outlets / blogs (depth over speed)
 
-- [The Information](https://www.theinformation.com/) — 빅테크 단독·내부 소식 (유료, 가장 빠른 deep scoop)
-- [The Verge AI](https://www.theverge.com/ai-artificial-intelligence) — 일반인 친화 속도전
-- [TechCrunch AI](https://techcrunch.com/category/artificial-intelligence/) — 자금조달·스타트업
-- [Ars Technica AI](https://arstechnica.com/ai/) — 기술적으로 정확
-- [MIT Tech Review AI](https://www.technologyreview.com/topic/artificial-intelligence/) — 사회적 함의
-- [Wired AI](https://www.wired.com/tag/artificial-intelligence/) — 인터뷰·피처
-
-### 🇰🇷 한국어
-- [GeekNews](https://news.hada.io/) — Hacker News 한국판, AI 글 상위 노출
-- [AI 타임스](https://www.aitimes.com/) — 산업 동향
-- [모두의연구소](https://modulabs.co.kr/) — 커뮤니티·세미나
-- [티타임즈TV (YouTube)](https://www.youtube.com/@TTimesTV) — 한국어 산업 해설
+- [The Information](https://www.theinformation.com/) — fastest deep scoops on big tech (paid)
+- [The Verge AI](https://www.theverge.com/ai-artificial-intelligence) — accessible speed-runs
+- [TechCrunch AI](https://techcrunch.com/category/artificial-intelligence/) — funding, startups
+- [Ars Technica AI](https://arstechnica.com/ai/) — technically accurate
+- [MIT Tech Review AI](https://www.technologyreview.com/topic/artificial-intelligence/) — societal angle
+- [Wired AI](https://www.wired.com/tag/artificial-intelligence/) — long-form, interviews
 
 ---
 
-## 📄 논문·연구 (가장 깊은 신호, 가장 늦은 스피드)
+## 📄 Papers / research (deepest signal, slowest)
 
-- [arXiv cs.AI](https://arxiv.org/list/cs.AI/recent) — 매일 새 프리프린트
-- [Hugging Face Papers](https://huggingface.co/papers) — 트렌딩 논문 + 토론 (요즘 사실상 표준)
-- [alphaXiv](https://www.alphaxiv.org/) — arXiv UI 개선 + 코멘트
-- [Papers with Code](https://paperswithcode.com/) — 논문+코드+벤치마크
-- [Semantic Scholar](https://www.semanticscholar.org/) — AI 기반 검색·인용 그래프
-- [Connected Papers](https://www.connectedpapers.com/) — 논문 그래프 시각화
+- [arXiv cs.AI](https://arxiv.org/list/cs.AI/recent) — daily preprint dump
+- [Hugging Face Papers](https://huggingface.co/papers) — trending papers + discussion (the de-facto standard)
+- [alphaXiv](https://www.alphaxiv.org/) — better arXiv UI + comments
+- [Papers with Code](https://paperswithcode.com/) — papers + code + benchmarks
+- [Semantic Scholar](https://www.semanticscholar.org/) — AI-powered search + citation graph
+- [Connected Papers](https://www.connectedpapers.com/) — visual paper graph
 
 ---
 
-## 🎥 YouTube — 심층 해설 (B Tier)
+## 🎥 YouTube — In-depth (B Tier)
 
-| 채널 | 강점 |
+| Channel | Strength |
 |---|---|
-| [AI Explained](https://www.youtube.com/@aiexplained-official) | 균형 잡힌 분석·신중한 해설 |
-| [Two Minute Papers](https://www.youtube.com/@TwoMinutePapers) | 논문 빠르게 훑기 |
-| [Yannic Kilcher](https://www.youtube.com/@YannicKilcher) | 정통 논문 리뷰 |
-| [Matthew Berman](https://www.youtube.com/@matthew_berman) | 새 모델 즉시 테스트·빌드 |
-| [Wes Roth](https://www.youtube.com/@WesRoth) | 산업 속보·해설 |
-| [1littlecoder](https://www.youtube.com/@1littlecoder) | 빠른 핸즈온 튜토리얼 |
-| [Lex Fridman](https://www.youtube.com/@lexfridman) | 장시간 인터뷰 |
+| [AI Explained](https://www.youtube.com/@aiexplained-official) | Balanced, careful analysis |
+| [Two Minute Papers](https://www.youtube.com/@TwoMinutePapers) | Fast paper rundowns |
+| [Yannic Kilcher](https://www.youtube.com/@YannicKilcher) | Rigorous paper reviews |
+| [Matthew Berman](https://www.youtube.com/@matthew_berman) | Same-day testing of new models |
+| [Wes Roth](https://www.youtube.com/@WesRoth) | Industry news + commentary |
+| [1littlecoder](https://www.youtube.com/@1littlecoder) | Fast hands-on tutorials |
+| [Lex Fridman](https://www.youtube.com/@lexfridman) | Long-form interviews |
 
 ---
 
-## 🔗 어그리게이터 / 트렌딩 (놓치기 싫을 때)
+## 🔗 Aggregators / trending (when you want full coverage)
 
-- [Hacker News](https://news.ycombinator.com/) — `news.ycombinator.com/?q=AI` 또는 [HN Best AI](https://hn.algolia.com/?query=AI)
-- [Hugging Face Trending](https://huggingface.co/models?sort=trending) — 트렌딩 모델 실시간
-- [Product Hunt — AI](https://www.producthunt.com/topics/artificial-intelligence) — 새 AI 제품 출시
-- [GitHub Trending — Python](https://github.com/trending/python?since=daily) — AI 레포 90% 차지
-- [Theresanaiforthat](https://theresanaiforthat.com/) — 새 AI 도구 디렉토리
-
----
-
-## 💬 Discord 커뮤니티
-
-- **Latent Space** — 빌더 중심, swyx 운영 ([초대 링크는 latent.space에서](https://www.latent.space/))
-- **Hugging Face** — 모델·라이브러리 공식
-- **EleutherAI** — 오픈소스 연구
-- **LAION** — 데이터셋·이미지 모델
-- **r/LocalLLaMA Discord** — 서브레딧 공식 채팅
+- [Hacker News](https://news.ycombinator.com/) — `news.ycombinator.com/?q=AI` or [HN Algolia AI](https://hn.algolia.com/?query=AI)
+- [Hugging Face Trending Models](https://huggingface.co/models?sort=trending) — trending models in real-time
+- [Product Hunt — AI](https://www.producthunt.com/topics/artificial-intelligence) — new AI product launches
+- [GitHub Trending — Python](https://github.com/trending/python?since=daily) — ~90% AI repos these days
+- [There's An AI For That](https://theresanaiforthat.com/) — directory of new tools
 
 ---
 
-## 🛠️ 자동화 팁 (놓치지 않는 법)
+## 💬 Discord communities
+
+- **Latent Space** — builder-focused, run by swyx ([invite at latent.space](https://www.latent.space/))
+- **Hugging Face** — official models / libraries
+- **EleutherAI** — open-source research
+- **LAION** — datasets, image models
+- **r/LocalLLaMA Discord** — official subreddit chat
+
+---
+
+## 🛠️ Automation tips (so you don't miss anything)
 
 ```text
-1. X 리스트 1개 + 푸시 알림: 모델 드랍 즉시 캐치
-2. RSS 리더 (Feedly/Inoreader)에 위 매체 OPML 등록 → 하루 1번 dump
-3. Hacker News + r/LocalLLaMA 키워드 알림 (e.g., "GPT-5", "Claude 5")
-4. 뉴스레터는 Gmail 라벨 + 필터로 받은편지함 분리 (출근길 10분에 일괄)
-5. arXiv는 Hugging Face Papers 트렌딩으로 대체 — 사람이 한번 걸러줌
+1. One curated X List + push notifications → instant model-drop alerts
+2. RSS reader (Feedly / Inoreader) loaded with above outlets → 1x/day dump
+3. Hacker News + r/LocalLLaMA keyword alerts (e.g., "GPT-5", "Claude 5")
+4. Gmail label + filter for newsletters → batch-read on commute
+5. Skip arXiv firehose — let HF Papers trending pre-filter for you
 ```
 
-### 추천 도구
-- [Feedly](https://feedly.com/) — RSS 어그리게이션 + AI 키워드 알림
-- [Inoreader](https://www.inoreader.com/) — Power user 친화
-- [Buttondown](https://buttondown.com/) / [Beehiiv](https://www.beehiiv.com/) — 본인 뉴스레터 시작용
+### Tools
+- [Feedly](https://feedly.com/) — RSS aggregation + AI keyword alerts
+- [Inoreader](https://www.inoreader.com/) — power-user friendly
+- [Buttondown](https://buttondown.com/) / [Beehiiv](https://www.beehiiv.com/) — start your own newsletter
 
 ---
 
-## 🎯 시나리오별 추천
+## 🎯 Recommendations by scenario
 
 <details>
-<summary><b>"전 그냥 안 놓치고만 싶어요"</b> (하루 10분)</summary>
+<summary><b>"Just don't let me miss anything important"</b> (10 min/day)</summary>
 
-1. **TLDR AI** 구독 (매일 아침 5분)
-2. **r/LocalLLaMA** 일주일에 한 번 둘러보기
-3. 끝.
+1. Subscribe to **TLDR AI** (5 min, every morning)
+2. Browse **r/LocalLLaMA** once a week
+3. Done.
 </details>
 
 <details>
-<summary><b>"빌더입니다, 새 모델·툴 다 써봐야 해요"</b> (하루 30분)</summary>
+<summary><b>"I'm a builder — I need to try every new model and tool"</b> (30 min/day)</summary>
 
-1. X 리스트 (위 빌더/연구자 30명)
-2. **r/LocalLLaMA** 매일
-3. **Hugging Face Trending Models** 매일
-4. **Latent Space** + **Interconnects** 뉴스레터
-5. **Matthew Berman** 또는 **AI Explained** 영상 주 2–3개
+1. X List of ~30 builders + researchers (above)
+2. **r/LocalLLaMA** daily
+3. **Hugging Face Trending Models** daily
+4. **Latent Space** + **Interconnects** newsletters
+5. 2–3 **Matthew Berman** or **AI Explained** videos / week
 </details>
 
 <details>
-<summary><b>"투자/전략 관점이 필요해요"</b> (하루 20–40분)</summary>
+<summary><b>"I need investor / strategy lens"</b> (20–40 min/day)</summary>
 
-1. **Stratechery** (유료, 가치 있음)
-2. **The Information** (유료, 단독 스쿠프)
-3. **Platformer** + **Semafor Technology** (무료)
-4. X — CEO 계정 위주
-5. **The Batch** (Andrew Ng) — 학술·산업 거시
+1. **Stratechery** (paid, worth it)
+2. **The Information** (paid, exclusive scoops)
+3. **Platformer** + **Semafor Technology** (free)
+4. X — CEO accounts
+5. **The Batch** (Andrew Ng) — macro academic + industry
 </details>
 
 <details>
-<summary><b>"연구자입니다, 시그널만 주세요"</b></summary>
+<summary><b>"Researcher — signal only"</b></summary>
 
 1. **arXiv cs.AI** + **Hugging Face Papers**
-2. **Import AI** (Jack Clark) — 안전·정책
-3. **Interconnects** (Nathan Lambert) — 포스트트레이닝
-4. X — Karpathy, LeCun, Jim Fan 등
-5. NeurIPS/ICLR/ICML 직전 X 리스트 모니터링
+2. **Import AI** (Jack Clark) — safety, policy
+3. **Interconnects** (Nathan Lambert) — post-training
+4. X — Karpathy, LeCun, Jim Fan, etc.
+5. Watch X lists right before NeurIPS / ICLR / ICML
 </details>
 
 ---
 
-## 🤝 기여
+## 🔄 How this list stays current
 
-이 리스트는 살아있는 문서입니다. 좋은 소스 빠진 거 발견하면:
-- **Issue**: 추천 채널 + 왜 좋은지 한 줄
-- **PR**: 위 형식 따라 추가 + 어느 티어인지 근거
+This is a **living document**. Maintenance signals:
 
-**기준**:
-- 시그널-노이즈 비가 높을 것
-- 한국어 사용자도 접근 가능 (영어는 OK, 유료여도 OK 단 명시)
-- 최소 6개월 이상 꾸준히 운영
+- ⏰ **Weekly**: maintainer reviews open issues / PRs and merges accepted additions
+- 🤖 **Auto checks**: a scheduled job verifies links aren't dead and flags stale sources (no posts in 90 days)
+- 📅 **Monthly**: tier reassessment — sources that slowed down get demoted, hot newcomers get promoted
+- 🗑️ **Removed**: dead newsletters, abandoned channels, and accounts that pivoted away from AI
+
+**Last major review**: see commit history. **Want to track changes?** ⭐ Star + Watch this repo.
+
+---
+
+## 🤝 Contributing
+
+PRs and issues are how this stays alive. Please add or remove sources whenever you spot something.
+
+### How to add a source
+1. Open a PR editing `README.md` in the right section
+2. Include: name, link, one-line description of *why* it's worth following
+3. Propose a tier (S / A / B / C) and a one-line justification
+4. Bonus: latency estimate and signal/noise self-assessment
+
+### How to flag a stale source
+- Open an issue titled `Stale: <source name>` with evidence (last post date, dead link, etc.)
+- Or open a PR removing it directly
+
+### Inclusion criteria
+- High signal-to-noise ratio
+- Accessible to a global English-speaking audience (paid is OK if marked)
+- Active for at least 6 months
+- Not pure self-promotion
+
+### Tier guidelines
+- **S** — breaks news within minutes, you'd actually miss things without it
+- **A** — strong curation, high SNR, sub-day latency
+- **B** — daily/weekly cadence, near-zero noise
+- **C** — weekly+ deep analysis, almost never wrong
 
 ---
 
 ## 📜 License
 
-MIT — 자유롭게 포크·번역·재배포.
+MIT — fork, translate, redistribute freely.
 
 ---
 

@@ -1,0 +1,32 @@
+name: 🗑️ Flag a stale source
+description: Report a source that's gone inactive, paywalled, or off-topic
+title: "[Stale] <source name>"
+labels: ["stale", "maintenance"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Source name
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      placeholder: Last post date, dead link, paywall change, pivot away from AI, etc.
+    validations:
+      required: true
+  - type: dropdown
+    id: action
+    attributes:
+      label: Suggested action
+      options:
+        - Remove
+        - Demote tier
+        - Replace with alternative (specify below)
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: Replacement (if any)
