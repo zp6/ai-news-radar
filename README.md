@@ -5,7 +5,7 @@
 
 ![Last Updated](https://img.shields.io/github/last-commit/xodn348/ai-news-radar?label=updated&color=brightgreen)
 ![Sources](https://img.shields.io/badge/sources-80+-blue)
-![Auto Updated](https://img.shields.io/badge/auto--updated-weekly-orange)
+![Auto Updated](https://img.shields.io/badge/auto--updated-daily-orange)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -207,14 +207,14 @@
 
 ## 🔄 How this list stays current
 
-This is a **living document**. Maintenance signals:
+This is a **living document**, updated daily. Maintenance signals:
 
-- ⏰ **Weekly**: maintainer reviews open issues / PRs and merges accepted additions
-- 🤖 **Auto checks**: a scheduled job verifies links aren't dead and flags stale sources (no posts in 90 days)
-- 📅 **Monthly**: tier reassessment — sources that slowed down get demoted, hot newcomers get promoted
-- 🗑️ **Removed**: dead newsletters, abandoned channels, and accounts that pivoted away from AI
+- 🤖 **Daily** (`daily-candidates.yml`): GitHub Action scrapes Hacker News, r/LocalLLaMA, r/MachineLearning, r/singularity, r/OpenAI, r/ClaudeAI, Hugging Face trending models, and HF daily papers — then files an auto-closing GitHub Issue listing candidates not yet in this list. (Runs 14:00 UTC.)
+- 🔗 **Weekly** (`link-check.yml`): lychee link checker scans every URL; opens an issue if anything 404s.
+- 🧠 **Daily** (Claude Code Routine): a scheduled agent reviews the day's candidates issue, evaluates fit, and drafts a PR with proposed additions / removals / tier changes.
+- 👀 **Continuous**: maintainers + community triage open issues, merge PRs, demote inactive sources.
 
-**Last major review**: see commit history. **Want to track changes?** ⭐ Star + Watch this repo.
+**Want to track changes?** ⭐ Star + Watch this repo.
 
 ---
 

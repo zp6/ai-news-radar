@@ -1,0 +1,55 @@
+name: Daily Candidates
+
+on:
+  schedule:
+    # 14:00 UTC = 23:00 KST = 09:00 ET — covers most timezones' "morning"
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Scrape candidates
+        run: python scripts/scrape_candidates.py > candidates.md
+
+      - name: Set date
+        id: date
+        run: echo "today=$(date -u +%Y-%m-%d)" >> $GITHUB_OUTPUT
+
+      - name: Open candidates issue
+        id: issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "📡 Daily candidates — ${{ steps.date.outputs.today }}"
+          content-filepath: candidates.md
+          labels: daily-candidates,triage
+
+      - name: Close prior daily-candidates issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW_ISSUE: ${{ steps.issue.outputs.issue-number }}
+        run: |
+          gh issue list \
+            --label daily-candidates \
+            --state open \
+            --json number \
+            --limit 60 \
+            -q '.[].number' \
+          | while read -r num; do
+              if [ "$num" != "$NEW_ISSUE" ]; then
+                gh issue close "$num" \
+                  --comment "Superseded by #$NEW_ISSUE." \
+                  --reason "not planned"
+              fi
+            done
